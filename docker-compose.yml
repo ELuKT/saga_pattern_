@@ -1,0 +1,23 @@
+services:
+  saga-rabbitmq-standalone:
+    container_name: saga-rabbitmq-standalone
+    image: rabbitmq:3.12.12-management-alpine
+    ports:
+      - 15672:15672
+      - 5672:5672
+    environment:
+      - RABBITMQ_DEFAULT_USER=2024user
+      - RABBITMQ_DEFAULT_PASS=2024pass
+  saga-postgresql:
+    container_name: saga-postgresql
+    image: postgres:12-alpine
+    ports:
+      - 5432:5432
+    volumes:
+      - ./initial.sql:/docker-entrypoint-initdb.d/initial.sql
+    environment:
+      - POSTGRES_PASSWORD=sagapass
+      - POSTGRES_USER=sagauser
+      - POSTGRES_DB=saga
+
+

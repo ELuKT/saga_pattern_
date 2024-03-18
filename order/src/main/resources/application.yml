@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    jdbcUrl: jdbc:postgresql://localhost:5432/saga
+    username: sagauser
+    password: sagapass
+  mq:
+    url: amqp://2024user:2024pass@localhost:5672/
+server:
+  port: 8081
